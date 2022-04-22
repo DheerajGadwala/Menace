@@ -204,8 +204,15 @@ def train(model, n = 100000):
 
                 modelChoices = model.getNextStates()
                 modelChoiceWeights = [model.matchBox[tuple(model.game.board)][i] for i in modelChoices]
+
+                mx = -math.inf
+                modelMove = None
+                for i in range(len(modelChoices)):
+                    if mx < modelChoiceWeights[i]:
+                        mx = modelChoiceWeights[i]
+                        modelMove = modelChoices[i] + 1
                 
-                modelMove = random.choices(modelChoices, weights = modelChoiceWeights)[0] + 1
+                #modelMove = random.choices(modelChoices, weights = modelChoiceWeights)[0] + 1
 
                 modelMoveHistory.append((tuple(model.game.board), modelMove - 1))
 
@@ -237,8 +244,15 @@ def train(model, n = 100000):
 
                 modelChoices = model.getNextStates()
                 modelChoiceWeights = [model.matchBox[tuple(model.game.board)][i] for i in modelChoices]
+
+                mx = -math.inf
+                modelMove = None
+                for i in range(len(modelChoices)):
+                    if mx < modelChoiceWeights[i]:
+                        mx = modelChoiceWeights[i]
+                        modelMove = modelChoices[i] + 1
                 
-                modelMove = random.choices(modelChoices, weights = modelChoiceWeights)[0] + 1
+                #modelMove = random.choices(modelChoices, weights = modelChoiceWeights)[0] + 1
 
                 modelMoveHistory.append((tuple(model.game.board), modelMove - 1))
 
